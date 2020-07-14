@@ -16,11 +16,11 @@ public class AdviceWebsiteApplication {
 		ConfigurableApplicationContext run =
 				SpringApplication.run(AdviceWebsiteApplication.class, args);
 
-		System.out.println("------------ User ----------");
-		UserRepository userRepository = run.getBean(UserRepository.class);
-
-		User byUserId = userRepository.findByUserId(3);
-		System.out.println(byUserId);
+		//System.out.println("------------ User ----------");
+//		UserRepository userRepository = run.getBean(UserRepository.class);
+//
+//		User byUserId = userRepository.findByUserId(3);
+//		System.out.println(byUserId);
 
 	}
 
