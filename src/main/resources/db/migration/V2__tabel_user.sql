@@ -1,7 +1,7 @@
 create table user (
                       userId int unsigned auto_increment
                           primary key,
-                      Name varchar(100)  null,
-                      Email varchar(50)  null,
-                      Password varchar(50)  null
+                      name varchar(100)  not null,
+                      email varchar(50)  not null,
+                      password varchar(50)  not null
 );

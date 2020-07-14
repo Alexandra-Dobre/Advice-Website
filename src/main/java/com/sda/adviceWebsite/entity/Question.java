@@ -11,29 +11,29 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "questionId")
-    public int questionId;
+    private Integer questionId;
 
     @Column(name = "question")
-    public String question;
+    private String question;
 
     @Column(name = "questionDateTime")
-    public Date questionDateTime;
+    private Date questionDateTime;
 
     @ManyToOne
     @JoinColumn(name = "submitterId")
-    public User userQuestions;
+    private User userQuestions;
 
     @OneToMany(mappedBy = "oneQuestion")
-    public List<Answer> questionAndAnswers;
+    private List<Answer> questionAndAnswers;
 
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    public Category categoryQuestions;
+    private Category categoryQuestions;
 
     public Question() {
     }
 
-    public Question(int questionId, String question, Date questionDateTime) {
+    public Question(Integer questionId, String question, Date questionDateTime) {
         this.questionId = questionId;
         this.question = question;
         this.questionDateTime = questionDateTime;
@@ -48,11 +48,11 @@ public class Question {
                 '}';
     }
 
-    public int getQuestionId() {
+    public Integer getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
     }
 

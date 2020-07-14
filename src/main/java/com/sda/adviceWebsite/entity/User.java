@@ -10,72 +10,72 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId")
-    public int userId;
+    private Integer userId;
 
-    @Column(name = "Name")
-    public String Name;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "Email")
-    public String Email;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "Password")
-    public String Password;
+    @Column(name = "password")
+    private String password;
 
     @OneToMany(mappedBy = "userQuestions")
-    public List<Question> questionList;
+    private List<Question> questionList;
 
     @OneToMany(mappedBy = "userAnswers")
-    public List<Answer> answerList;
+    private List<Answer> answerList;
 
     public User() {
     }
 
-    public User(int userId, String name, String email, String password) {
+    public User(Integer userId, String name, String email, String password) {
         this.userId = userId;
-        Name = name;
-        Email = email;
-        Password = password;
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", Name='" + Name + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Password='" + Password + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 }

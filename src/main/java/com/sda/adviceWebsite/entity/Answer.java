@@ -10,26 +10,26 @@ public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "answerId")
-    public int answerId;
+    private Integer answerId;
 
     @Column(name = "answer")
-    public String answer;
+    private String answer;
 
     @Column(name = "answerDateTime")
-    public Date answerDateTime;
+    private Date answerDateTime;
 
     @ManyToOne
     @JoinColumn(name = "submitterId")
-    public User userAnswers;
+    private User userAnswers;
 
     @ManyToOne
     @JoinColumn(name = "questionId")
-    public Question oneQuestion;
+    private Question oneQuestion;
 
     public Answer() {
     }
 
-    public Answer(int answerId, String answer, Date answerDateTime) {
+    public Answer(Integer answerId, String answer, Date answerDateTime) {
         this.answerId = answerId;
         this.answer = answer;
         this.answerDateTime = answerDateTime;
@@ -44,11 +44,11 @@ public class Answer {
                 '}';
     }
 
-    public int getAnswerId() {
+    public Integer getAnswerId() {
         return answerId;
     }
 
-    public void setAnswerId(int answerId) {
+    public void setAnswerId(Integer answerId) {
         this.answerId = answerId;
     }
 

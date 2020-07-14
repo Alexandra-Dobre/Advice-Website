@@ -10,18 +10,18 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoryId")
-    public int categoryId;
+    private Integer categoryId;
 
     @Column(name = "type")
-    public String type;
+    private String type;
 
     @OneToMany(mappedBy = "categoryQuestions")
-    public List<Question> categoryAndQuestions;
+    private List<Question> categoryAndQuestions;
 
     public Category() {
     }
 
-    public Category(int categoryId, String type) {
+    public Category(Integer categoryId, String type) {
         this.categoryId = categoryId;
         this.type = type;
     }
@@ -34,11 +34,11 @@ public class Category {
                 '}';
     }
 
-    public int getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 
