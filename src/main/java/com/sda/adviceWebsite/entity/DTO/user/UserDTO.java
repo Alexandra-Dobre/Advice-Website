@@ -1,26 +1,52 @@
 package com.sda.adviceWebsite.entity.DTO.user;
 
-import java.util.Date;
-
 public class UserDTO {
     private Integer userId;
     private String userName;
-    private Date creationDate;
+    private String email;
+    private String password;
+
+    public UserDTO() {
+    }
+
+    public UserDTO(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+
+    }
 
 
-    public UserDTO(Integer userId, String userName, String creationDate) {
+    public UserDTO(Integer userId, String userName) {
         this.userId = userId;
         this.userName = userName;
-        this.creationDate = new Date();
     }
+
 
     @Override
     public String toString() {
         return "UserDTO{" +
                 "userId=" + userId +
                 ", userName='" + userName + '\'' +
-                ", creationDate=" + creationDate +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getUserId() {
@@ -39,11 +65,4 @@ public class UserDTO {
         this.userName = userName;
     }
 
-    public Date getCreationDate() {
-        return creationDate = new Date();
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = new Date();
-    }
 }

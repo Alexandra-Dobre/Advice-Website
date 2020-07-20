@@ -1,5 +1,6 @@
 package com.sda.adviceWebsite.service;
 
+import com.sda.adviceWebsite.entity.DTO.user.UserDTO;
 import com.sda.adviceWebsite.entity.User;
 import com.sda.adviceWebsite.exception.UserDetailsFoundException;
 import com.sda.adviceWebsite.repository.UserRepository;
@@ -10,20 +11,28 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-    public UserRepository userRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
     public UserService(UserRepository userRepository) {
+
         this.userRepository = userRepository;
     }
 
-    public User save(User user) {
-        if (findByUsername(user.getName()).isPresent()) {
+    public User saveUser(UserDTO userDTO) {
+        User user = new User();
+
+        user.setName(userDTO.getUserName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+
+        if (findByUsername(userDTO.getUserName()).isPresent()) {
             throw new UserDetailsFoundException("Person with username: " +
-                    user.getName() + " already exists");
-        } else if (findByEmail(user.getEmail()).isPresent()) {
+                    userDTO.getUserName() + " already exists");
+        } else if (findByEmail(userDTO.getEmail()).isPresent()) {
             throw new UserDetailsFoundException("Person with email: " +
-                    user.getEmail() + " already exists");
+                    userDTO.getEmail() + " already exists");
         }
         return userRepository.save(user);
     }
@@ -35,4 +44,5 @@ public class UserService {
     public Optional<User> findByEmail (String email){
         return userRepository.findUsersByEmailContaining(email);
     }
-}
+
+   }

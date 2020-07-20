@@ -21,21 +21,51 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UserDTO> user(){
-        Optional<User> myUser = userRepository.findUsersByNameContaining("tom");
+    //TODO - lista
+    @GetMapping(value = "/userid/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> findUserId(@PathVariable Integer userId){
+        Optional<User> userIdOptional = userRepository.findUserByUserId(userId);
 
-        if(!myUser.isPresent()){
+        if(!userIdOptional.isPresent()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        User userFromOptional = myUser.get();
+        User myUserId = userIdOptional.get();
 
-        UserDTO dto = new UserDTO(
-                userFromOptional.getUserId(), userFromOptional.getName(), "14 July 2020");
+        UserDTO userIdDTO = new UserDTO(
+                myUserId.getUserId(), myUserId.getName());
 
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return new ResponseEntity<>(userIdDTO, HttpStatus.OK);
     }
+
+    //TODO - lista
+    @GetMapping(value = "/username/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDTO> findUserName(@PathVariable String name){
+        Optional<User> userNameOptional = userRepository.findUsersByNameContaining(name);
+
+        if(!userNameOptional.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        User myUserName = userNameOptional.get();
+
+        UserDTO userNameDTO = new UserDTO(
+                myUserName.getUserId(), myUserName.getName());
+
+        return new ResponseEntity<>(userNameDTO, HttpStatus.OK);
+    }
+
+
+    // TODO
+//    @PostMapping(value = "/register/registerUser",
+//            produces = MediaType.APPLICATION_JSON_VALUE,
+//            consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<UserDTO> registerUser(@RequestBody UserDTO register) {
+//        User savedUser = userService.saveUser(register);
+//        UserDTO userSavedDTO = new UserDTO(savedUser.getName(), savedUser.getEmail(),
+//                savedUser.getPassword());
+//        return new ResponseEntity<>(userSavedDTO, HttpStatus.ACCEPTED);
+//    }
 
 
 }
