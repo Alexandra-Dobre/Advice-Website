@@ -24,13 +24,14 @@ public class UserService {
         User user = new User();
 
         user.setName(userDTO.getUserName());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
+//        user.setEmail(userDTO.getEmail());
+//        user.setPassword(userDTO.getPassword());
 
         if (findByUsername(userDTO.getUserName()).isPresent()) {
             throw new UserDetailsFoundException("Person with username: " +
                     userDTO.getUserName() + " already exists");
-        } else if (findByEmail(userDTO.getEmail()).isPresent()) {
+        }
+        else if (findByEmail(userDTO.getEmail()).isPresent()) {
             throw new UserDetailsFoundException("Person with email: " +
                     userDTO.getEmail() + " already exists");
         }

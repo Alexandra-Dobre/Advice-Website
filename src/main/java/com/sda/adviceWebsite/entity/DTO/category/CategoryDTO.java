@@ -1,12 +1,16 @@
 package com.sda.adviceWebsite.entity.DTO.category;
 
+import com.sda.adviceWebsite.entity.DTO.question.QuestionDTO;
 import com.sda.adviceWebsite.entity.Question;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryDTO {
 
     private Integer categoryId;
     private String type;
-    private Question questionType;
+    private List<Question> questionsList;
 
     public CategoryDTO() {
     }
@@ -14,7 +18,7 @@ public class CategoryDTO {
     public CategoryDTO(Integer categoryId, String type) {
         this.categoryId = categoryId;
         this.type = type;
-        this.questionType = new Question();
+        this.questionsList = new ArrayList<>();
     }
 
     @Override
@@ -22,7 +26,7 @@ public class CategoryDTO {
         return "CategoryDTO{" +
                 "categoryId=" + categoryId +
                 ", type='" + type + '\'' +
-                ", questionType=" + questionType +
+                ", questionsList=" + questionsList +
                 '}';
     }
 
@@ -42,11 +46,11 @@ public class CategoryDTO {
         this.type = type;
     }
 
-    public Question getQuestionType() {
-        return questionType;
+    public List<Question> getQuestionsList() {
+        return questionsList;
     }
 
-    public void setQuestionType(Question questionType) {
-        this.questionType = questionType;
+    public void setQuestionsList(List<Question> questionsList) {
+        this.questionsList = questionsList;
     }
 }

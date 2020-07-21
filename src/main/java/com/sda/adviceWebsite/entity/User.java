@@ -28,6 +28,7 @@ public class User {
     private List<Answer> answerList;
 
     public User() {
+
     }
 
     public User(String name, String email) {

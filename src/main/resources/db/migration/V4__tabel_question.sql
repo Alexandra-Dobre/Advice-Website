@@ -1,10 +1,10 @@
 create table question(
                          questionId int unsigned auto_increment
                              primary key,
-                         question varchar(1000) null,
+                         question varchar(1000) not null,
                          questionDateTime datetime,
-                         submitterId int unsigned null,
-                         categoryId int unsigned null,
+                         submitterId int unsigned  null,
+                         categoryId int unsigned  null,
                          constraint question_fk_1
                              foreign key (submitterId) references user(userId),
                          constraint question_fk_2

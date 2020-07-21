@@ -68,4 +68,19 @@ public class Answer {
         this.answerDateTime = answerDateTime;
     }
 
+    public User getUserAnswers() {
+        return userAnswers;
+    }
+
+    public void setUserAnswers(User userAnswers) {
+        this.userAnswers = userAnswers;
+    }
+
+    public Question getOneQuestion() {
+        return oneQuestion;
+    }
+
+    public void setOneQuestion(Question oneQuestion) {
+        this.oneQuestion = oneQuestion;
+    }
 }

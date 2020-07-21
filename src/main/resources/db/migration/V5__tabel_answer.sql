@@ -1,7 +1,7 @@
 create table answer(
                        answerId int unsigned auto_increment
                            primary key,
-                       answer varchar(5000) null,
+                       answer varchar(5000) not null,
                        answerDateTime datetime,
                        submitterId int unsigned null,
                        questionId int unsigned null,

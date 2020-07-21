@@ -15,7 +15,7 @@ public class Category {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "categoryQuestions")
+    @OneToMany(mappedBy = "categoryQuestions", fetch = FetchType.EAGER)
     private List<Question> categoryAndQuestions;
 
     public Category() {
@@ -48,5 +48,13 @@ public class Category {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Question> getCategoryAndQuestions() {
+        return categoryAndQuestions;
+    }
+
+    public void setCategoryAndQuestions(List<Question> categoryAndQuestions) {
+        this.categoryAndQuestions = categoryAndQuestions;
     }
 }

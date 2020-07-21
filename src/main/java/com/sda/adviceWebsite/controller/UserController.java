@@ -55,6 +55,11 @@ public class UserController {
         return new ResponseEntity<>(userNameDTO, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/user")
+    public void saveUser(@RequestBody UserDTO user) {
+        User sevedUser = userService.saveUser(user);
+
+    }
 
     // TODO
 //    @PostMapping(value = "/register/registerUser",

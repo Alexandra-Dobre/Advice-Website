@@ -72,11 +72,12 @@ public class Question {
         this.questionDateTime = questionDateTime;
     }
 
-    public Category getCategoryQuestions() {
-        return categoryQuestions;
-    }
 
     public void setCategoryQuestions(Category categoryQuestions) {
         this.categoryQuestions = categoryQuestions;
+    }
+
+    public String getCategoryName() {
+        return categoryQuestions.getType();
     }
 }
